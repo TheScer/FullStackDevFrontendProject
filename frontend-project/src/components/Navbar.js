@@ -1,8 +1,21 @@
 import { Link } from "react-router-dom";
+import { Modal } from "../components/Modal";
+import { Backdrop } from "./Backdrop";
+import { useState } from "react";
 
 import "./Navbar.css";
 
 export const Navbar = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const showModalHandler = () => {
+    setShowModal(true);
+  };
+
+  const cancelModalHandler = () => {
+    setShowModal(false);
+  };
+
   return (
     <header className="header">
       <h2>Pages</h2>
@@ -17,8 +30,13 @@ export const Navbar = () => {
           <li>
             <Link to="/recent">Recent</Link>
           </li>
+          <li>
+            <button onClick={showModalHandler}>sign up to newsletter</button>
+          </li>
         </ul>
       </nav>
+      {showModal && <Modal onCancel={cancelModalHandler} />}
+      {showModal ? <Backdrop onClick={cancelModalHandler} /> : null}
     </header>
   );
 };
