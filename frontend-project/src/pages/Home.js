@@ -1,10 +1,17 @@
 import React from "react";
 import { Modal } from "../components/Modal";
 import { Backdrop } from "../components/Backdrop";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Home = () => {
 
+  const [id, setID] = useState([]);
+
+  const fetchID = async() => {
+    const response = await fetch(
+      ""
+    )
+  }
   const [news, setNews] = useState([]);
 
   const fetchNews = async() => {
