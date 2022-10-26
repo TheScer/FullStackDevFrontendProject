@@ -27,7 +27,7 @@ export const NewsList = (props) => {
     <div>
       <ul>
         {/* testing for now, will change it to props.newsItems or destructure after */}
-        {newsItems.map((item) => (
+        {props.news.map((item) => (
           <NewsItem
             id={item.id}
             by={item.by}
