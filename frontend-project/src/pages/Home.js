@@ -5,10 +5,17 @@ import { useState, useEffect } from "react";
 import { NewsList } from "../components/NewsList";
 
 export const Home = () => {
-  
-  const [id, setID] = useState([]);
 
   const fetchID = async() => {
+
+    const del = await fetch("https://news-project-fsd-default-rtdb.europe-west1.firebasedatabase.app/newsid.json")
+    const check = await del.json();
+    if (check){
+      const reset = await fetch("https://news-project-fsd-default-rtdb.europe-west1.firebasedatabase.app/newsid.json",
+      {
+        method: "DELETE"
+      })
+    } 
     const response = await fetch(
       "https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty"
     )
@@ -61,24 +68,21 @@ export const Home = () => {
         }
       }      
     }
-
     fetchNewsBody(fetchedNews);
-    //console.log(fetchedNews);
-    // figure out how to slice data and get top 20 news id and then send request to api to load news and then oscar does the rest
-
-    /*for (const key in data) {
-      fetchedNews.push({
-        id: key.id,
-        by: data[key].by,
-        title: data[key].title,
-        url: data[key].url,
-      });
-    }*/
-    //setNews(fetchedNews);
   };
+
+  const finalNews = [];
 
   const fetchNewsBody = async(fetchedNews) => {
     // now have to send fetch request using fetchedNews id and the content should go to some component
+    for (var key in fetchedNews) {
+      //console.log("i am fetching " , fetchedNews[key].id);
+      const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${fetchedNews[key].id}.json?print=pretty`)
+      const data = await response.json();
+      //console.log(data)
+      finalNews.push(data);
+    }
+    setNews(finalNews);
   }
 
   useEffect(() => {
