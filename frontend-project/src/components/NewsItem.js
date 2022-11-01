@@ -9,7 +9,9 @@ export const NewsItem = ({ id, by, time, title, url }) => {
         <h3 className="title">Title: {title}</h3>
         <h3 className="description">Author: {by}</h3>
         <h3 className="date">Time: {time}</h3>
-        <a target="_blank" href={url}>Link: {url}</a>
+        <a target="_blank" href={url}>
+          Click Here to see the article!
+        </a>
       </div>
     </div>
   );
