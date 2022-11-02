@@ -1,16 +1,17 @@
 .header {
-    width: 100%;
+    width: 90%;
     height: 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #77002e;
+    background-color: #abd7eb;
     padding: 0 10%;
+    border-radius: 25px;
   }
   
   .header h2 {
-    font-size: 2rem;
-    color: white;
+    font-size: 3rem;
+    color: black;
     font-weight: bold;
   }
   
@@ -23,17 +24,43 @@
   }
   
   .header li {
-    margin-left: 3rem;
+    margin-left: 4rem;
   }
   
   .header a {
     text-decoration: none;
     font-size: 1.5rem;
-    color: #fcb8d2;
+    color: grey;
   }
   
   .header a:hover,
   .header a:active,
   .header a.active {
     color: white;
+  }
+
+  button{
+    background-color: #e1ecf4;
+    border-radius: 3px;
+    border: 1px solid #7aa7c7;
+    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #39739d;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
   }
