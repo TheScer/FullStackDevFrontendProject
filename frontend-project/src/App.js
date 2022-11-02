@@ -2,8 +2,9 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 
 import { Home } from "./pages/Home";
-import { Popular } from "./pages/Popular";
-import { Recent } from "./pages/Recent";
+import { Popular } from "./pages/Popular.js";
+import { JobHunt } from "./pages/JobHunt";
+import { About } from "./pages/About";
 import { Navbar } from "./components/Navbar";
 
 function App() {
@@ -15,12 +16,16 @@ function App() {
           <Home />
         </Route>
 
-        <Route path="/Popular">
+        <Route path="/popular">
           <Popular />
         </Route>
 
-        <Route path="/Recent">
-          <Recent />
+        <Route path="/jobhunt">
+          <JobHunt />
+        </Route>
+
+        <Route path="/about">
+          <About />
         </Route>
       </Switch>
     </div>

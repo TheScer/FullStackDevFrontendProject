@@ -84,6 +84,7 @@ export const Home = () => {
       finalNews.push(data);
     }
     setNews(finalNews);
+    console.log(news);
   };
 
   useEffect(() => {
@@ -103,6 +104,10 @@ export const Home = () => {
   return (
     <div>
       <h2>Home</h2>
+      <h3>
+        News Page! sroll down to see all the news from different sites,
+        conveniently compiled just for you!
+      </h3>
       <NewsList news={news}></NewsList>
       {showModal && <Modal onCancel={cancelModalHandler} />}
       {showModal ? <Backdrop onClick={cancelModalHandler} /> : null}

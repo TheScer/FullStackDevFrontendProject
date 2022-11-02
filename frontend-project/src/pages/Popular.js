@@ -1,34 +1,35 @@
 import { NewsList } from "../components/NewsList";
-import {useState, useEffect, React} from "react";
+import { useState, useEffect, React } from "react";
 
 export const Popular = () => {
-
-  const fetchID = async() => {
-
-    const del = await fetch("https://news-project-fsd-default-rtdb.europe-west1.firebasedatabase.app/newsid.json")
+  const fetchID = async () => {
+    const del = await fetch(
+      "https://news-project-fsd-default-rtdb.europe-west1.firebasedatabase.app/newsid.json"
+    );
     const check = await del.json();
-    if (check){
-      const reset = await fetch("https://news-project-fsd-default-rtdb.europe-west1.firebasedatabase.app/newsid.json",
-      {
-        method: "DELETE"
-      })
-    } 
+    if (check) {
+      const reset = await fetch(
+        "https://news-project-fsd-default-rtdb.europe-west1.firebasedatabase.app/newsid.json",
+        {
+          method: "DELETE",
+        }
+      );
+    }
     const response = await fetch(
       "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
-    )
+    );
     const data = await response.json();
     const fetchedID = [];
-   //console.log(data);
-    for (const key in data){
+    //console.log(data);
+    for (const key in data) {
       fetchedID.push({
-        id: data[key]
+        id: data[key],
       });
     }
     setNewsID(fetchedID);
-  }
-  
+  };
 
-  const setNewsID = async(id) => {
+  const setNewsID = async (id) => {
     const response = await fetch(
       "https://news-project-fsd-default-rtdb.europe-west1.firebasedatabase.app/newsid.json",
       {
@@ -42,13 +43,11 @@ export const Popular = () => {
     //const data = await response.json();
     //console.log(data);
     fetchNewsID();
-  }
+  };
 
   const [news, setNews] = useState([]);
 
   const fetchNewsID = async () => {
-
-
     const response = await fetch(
       "https://news-project-fsd-default-rtdb.europe-west1.firebasedatabase.app/newsid.json"
     );
@@ -60,38 +59,44 @@ export const Popular = () => {
     for (const key in data) {
       const subdata = data[key];
       if (fetchedNews.length < 20) {
-        for (var i=0; i<20; i++){
-          fetchedNews.push(subdata[i])
+        for (var i = 0; i < 20; i++) {
+          fetchedNews.push(subdata[i]);
         }
-      }      
+      }
     }
     fetchNewsBody(fetchedNews);
   };
 
   const finalNews = [];
 
-  const fetchNewsBody = async(fetchedNews) => {
+  const fetchNewsBody = async (fetchedNews) => {
     // now have to send fetch request using fetchedNews id and the content should go to some component
     for (var key in fetchedNews) {
       //console.log("i am fetching " , fetchedNews[key].id);
-      const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${fetchedNews[key].id}.json?print=pretty`)
+      const response = await fetch(
+        `https://hacker-news.firebaseio.com/v0/item/${fetchedNews[key].id}.json?print=pretty`
+      );
       const data = await response.json();
       //console.log(data)
       finalNews.push(data);
     }
     setNews(finalNews);
-  }
+  };
 
   useEffect(() => {
     fetchID();
   }, []);
 
-
-
   return (
     <div>
-      <h2>Popular</h2>
-      <NewsList  news={news} ></NewsList>
+      <h2>Top Stories</h2>
+      <h3>
+        This page brings together alll of the most popular stories of the last
+        week and shows it to you for quick consumption so you can get on with
+        the rest of your day feeling smart, informed, and with a recent
+        conversational topic!
+      </h3>
+      <NewsList news={news}></NewsList>
     </div>
   );
 };
