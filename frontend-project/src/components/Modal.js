@@ -3,8 +3,10 @@ import React from "react";
 export const Modal = (props) => {
   return (
     <div className="modal">
-      <input placeholder="email here!"></input>
-      <input placeholder="name"></input>
+      <div>
+        <input className="modal-in" placeholder="email here!"></input>
+        <input className="modal-in" placeholder="name"></input>
+      </div>
       <button className="btn btn--alt" onClick={props.onCancel}>
         Cancel
       </button>

@@ -18,7 +18,7 @@ export const Navbar = () => {
 
   return (
     <header className="header">
-      <h2>HackerNews! Stay Informed!</h2>
+      <h2>Stay Informed!</h2>
       <nav>
         <ul>
           <li>
@@ -34,7 +34,9 @@ export const Navbar = () => {
             <Link to="/about">AboutUs!</Link>
           </li>
           <li>
-            <button onClick={showModalHandler}>sign up to newsletter</button>
+            <button className="btn" onClick={showModalHandler}>
+              sign up to newsletter
+            </button>
           </li>
         </ul>
       </nav>

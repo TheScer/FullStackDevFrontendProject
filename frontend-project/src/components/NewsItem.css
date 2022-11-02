@@ -1,6 +1,6 @@
 .listItem {
     width: 90%;
-    height: 150px;
+    height: 250px;
     background-color: #eeeeee;
     margin-top: 3%;
     text-align: left;
@@ -12,6 +12,7 @@
     padding-left: 15px;
     margin-left: 5%;
     position: relative;
+    vertical-align: auto;
   
     border: double 3px transparent;
     border-radius: 25px;
@@ -34,6 +35,7 @@
     font-style: medium;
     font-weight: 500;
     float: left;
+    padding-top: 1px;
   }
   .description {
     position: absolute;
@@ -55,4 +57,10 @@
     top: 65%;
     font-size: 18px;
     left: 15px;
+  }
+
+  .link{
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-bottom: 1%px;
   }
